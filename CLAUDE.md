@@ -6,7 +6,7 @@ Deze repo is één "spoke" in een hub-and-spoke netwerk van gespecialiseerde fys
 - Statische HTML/CSS/vanilla JS op GitHub Pages, custom domein via CNAME.
 - Gedeelde Supabase-backend, project islujznszevdynguhjdc, met anon key in de frontend.
 - Gedeelde tabellen: therapeuten, praktijken, therapeut_subcategorieen, therapeut_praktijken, subcategorieen, categorieen.
-- Elke spoke deelt dezelfde structuur en bestanden: index.html, mijn-profiel.html, therapeuten.html, protocollen.html (gegenereerd), sync_protocollen.py, .github/workflows/sync-protocollen.yml, protocollen-config.json. Let op: deze repo noemt het aanmeldbestand `aanmelden-therapeut.html` (niet `therapeut-aanmelden.html` zoals de meeste andere spokes) en heeft een typo-bestand `pricavy.html` (bedoeld als privacy.html) — check bij links welk bestand daadwerkelijk bestaat.
+- Elke spoke deelt dezelfde structuur en bestanden: index.html, mijn-profiel.html, therapeuten.html, privacy.html, protocollen.html (gegenereerd), sync_protocollen.py, .github/workflows/sync-protocollen.yml, protocollen-config.json. Let op: deze repo noemt het aanmeldbestand `aanmelden-therapeut.html` (niet `therapeut-aanmelden.html` zoals de meeste andere spokes).
 
 ## Belangrijke conventies
 - Het therapeut-aanmeldformulier linkt ALTIJD relatief/lokaal binnen de eigen subsite (nooit naar vindjefysio.net).
