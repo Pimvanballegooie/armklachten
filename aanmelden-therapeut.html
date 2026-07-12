@@ -294,32 +294,32 @@ const DOMEINEN = {
     naam: 'Schouder en bovenarm', anatomie: 'Schoudergordel & bovenarm',
     kleur: '#17A398', kleurLicht: '#E6F5F3', icoon: '💪',
     subcats: [
-      { id: 961, naam: 'Schouderpijn & frozen shoulder', sub: 'Frozen shoulder, slijmbeursontsteking, instabiliteit' },
-      { id: 962, naam: 'Impingement & rotator cuff', sub: 'Inklemming, peesklachten, kracht boven het hoofd' },
+      { id: 50, naam: 'Schouderpijn & frozen shoulder', sub: 'Frozen shoulder, slijmbeursontsteking, instabiliteit' },
+      { id: 50, naam: 'Impingement & rotator cuff', sub: 'Inklemming, peesklachten, kracht boven het hoofd' },
     ]
   },
   elleboog: {
     naam: 'Elleboog en onderarm', anatomie: 'Elleboog & onderarm',
     kleur: '#E8952E', kleurLicht: '#FDF2E3', icoon: '🦾',
     subcats: [
-      { id: 963, naam: 'Tenniselleboog & golferselleboog', sub: 'Pees-overbelasting aan buiten- of binnenzijde' },
+      { id: 51, naam: 'Tenniselleboog & golferselleboog', sub: 'Pees-overbelasting aan buiten- of binnenzijde' },
     ]
   },
   polshand: {
     naam: 'Pols en hand', anatomie: 'Pols, hand & vingers',
     kleur: '#2E86C1', kleurLicht: '#EAF3FA', icoon: '🖐️',
     subcats: [
-      { id: 964, naam: 'Carpaal tunnel & tintelingen', sub: 'Beknelde zenuw, tintelende of dove vingers' },
-      { id: 965, naam: 'Pols-, duim- en handklachten', sub: 'Artrose, peesklachten, na een fractuur' },
+      { id: 52, naam: 'Carpaal tunnel & tintelingen', sub: 'Beknelde zenuw, tintelende of dove vingers' },
+      { id: 52, naam: 'Pols-, duim- en handklachten', sub: 'Artrose, peesklachten, na een fractuur' },
     ]
   },
   themas: {
     naam: "Thema's — voor elk gebied", anatomie: 'Schouder t/m hand',
     kleur: '#5B7285', kleurLicht: '#EEF2F5', icoon: '🎯',
     subcats: [
-      { id: 966, naam: 'Revalidatie na operatie', sub: 'Herstel na een operatie aan schouder, elleboog of hand' },
-      { id: 967, naam: 'Voorbereiding op operatie', sub: 'Prehabilitatie: fitter de operatie in' },
-      { id: 968, naam: 'Sport, bewegen en overbelasting', sub: 'Klachten door sport of werk' },
+      { id: 53, naam: 'Revalidatie na operatie', sub: 'Herstel na een operatie aan schouder, elleboog of hand' },
+      { id: 54, naam: 'Voorbereiding op operatie', sub: 'Prehabilitatie: fitter de operatie in' },
+      { id: 55, naam: 'Sport, bewegen en overbelasting', sub: 'Klachten door sport of werk' },
     ]
   }
 };
@@ -375,7 +375,10 @@ function specGewijzigd(cb) {
 }
 
 function gekozenSubcatIds() {
-  return [...document.querySelectorAll('.spec-checkbox:checked')].map(c => parseInt(c.value));
+  // Sommige specialisatie-checkboxen delen dezelfde onderliggende subcategorie_id
+  // (bv. "Schouderpijn & frozen shoulder" en "Impingement & rotator cuff" zijn beide
+  // subcategorie 50) — dedupliceren voorkomt een dubbele koppeling bij het opslaan.
+  return [...new Set([...document.querySelectorAll('.spec-checkbox:checked')].map(c => parseInt(c.value)))];
 }
 
 function resetCodeStatus() {
